@@ -7,7 +7,7 @@ A command-line based **speech translation pipeline** that automatically:
 
 ---
 
-## 🚀 Features
+##  Features
 
 - 🔊 Transcribe speech from `.mp3`, `.wav`, `.flac`, `.m4a`
 - 🌐 Translate from any detected spoken language to any supported target language
