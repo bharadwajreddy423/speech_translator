@@ -111,5 +111,3 @@ This will run tests for:
 * Language translation
 * Input validation logic
 
----
-
