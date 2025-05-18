@@ -17,6 +17,8 @@ A command-line based **speech translation pipeline** that automatically:
 - 🧪 Includes unit tests with `pytest`
 - 🖥️ Runs on CPU or GPU with configurable precision
 
+![image](https://github.com/user-attachments/assets/f972d525-5f74-40b3-a47c-d26929d44e60)
+
 ---
 
 ## 📁 Project Structure
