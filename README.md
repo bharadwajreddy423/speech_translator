@@ -1,5 +1,5 @@
-````markdown
-# 🎙️ Speech Translator
+
+## 🎙️ Speech Translator
 
 A command-line based **speech translation pipeline** that automatically:
 1. Transcribes spoken language from an audio file (using [FasterWhisper](https://github.com/SYSTRAN/faster-whisper))
