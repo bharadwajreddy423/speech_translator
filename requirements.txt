@@ -1,0 +1,7 @@
+faster-whisper
+transformers
+torch
+torchaudio
+sentencepiece
+sacremoses
+pytest
