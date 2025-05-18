@@ -1,63 +1,69 @@
-```markdown
-# 🎙️ Speech Translator – Multilingual Audio to Text & Translation Pipeline
+````markdown
+# 🎙️ Speech Translator
 
-This project enables **automatic transcription and translation** of speech from audio files using:
-
-- 🧠 [FasterWhisper](https://github.com/SYSTRAN/faster-whisper) for automatic speech recognition (ASR)
-- 🌍 [Helsinki-NLP MarianMT](https://huggingface.co/Helsinki-NLP) models for neural machine translation (NMT)
-- ✅ Command-line interface for batch processing
-- 🧪 Unit-tested with Pytest for reliability
+A command-line based **speech translation pipeline** that automatically:
+1. Transcribes spoken language from an audio file (using [FasterWhisper](https://github.com/SYSTRAN/faster-whisper))
+2. Translates the transcript into a desired language (using [MarianMT](https://huggingface.co/Helsinki-NLP))
 
 ---
 
-## ✅ Features
+## 🚀 Features
 
-- 🔁 Transcribes spoken language from `.mp3`, `.wav`, `.m4a`, `.flac` files
-- 🌐 Translates into **any supported language**
-- 🧾 Accepts input like `audio/german.mp3:en` to convert from German audio to English text
-- 🧠 Automatically detects source language
-- ⚙️ Supports CPU and GPU, with customizable compute precision
-- 🔬 Includes unit tests to ensure accurate processing
+- 🔊 Transcribe speech from `.mp3`, `.wav`, `.flac`, `.m4a`
+- 🌐 Translate from any detected spoken language to any supported target language
+- 🧠 Uses FasterWhisper for fast and accurate ASR
+- 🤖 Uses MarianMT models for multilingual neural machine translation
+- 🔁 Batch processing via CLI (multiple audio files at once)
+- 🧪 Includes unit tests with `pytest`
+- 🖥️ Runs on CPU or GPU with configurable precision
 
 ---
 
 ## 📁 Project Structure
 
-```
-
-speech\_translator/
-├── audio/                  # Input audio samples
-├── tests/                  # Unit tests
-├── transcription.py        # Whisper ASR logic
-├── translation.py          # MarianMT translation logic
-├── run\_pipeline.py         # Main CLI pipeline
-├── requirements.txt        # Dependencies
-├── pytest.ini              # Test configuration
-├── .gitignore              # Ignore virtual env and cache
-└── README.md               # Project documentation
-
+```text
+speech_translator/
+├── audio/                    # Sample audio files for testing
+│   ├── audio01.mp3
+│   ├── audio02.mp3
+│   └── ...
+├── tests/                    # Unit tests for each module
+│   ├── test_transcription.py
+│   ├── test_translation.py
+│   └── test_utils.py
+├── transcription.py          # ASR module using FasterWhisper
+├── translation.py            # Translation module using MarianMT
+├── run_pipeline.py           # Main CLI pipeline
+├── requirements.txt          # Python dependencies
+├── pytest.ini                # Pytest configuration
+├── .gitignore                # Ignore venv, cache, and audio outputs
+└── README.md                 # Project documentation
 ````
 
 ---
 
-## ⚙️ Setup Instructions
+## ✅ Setup Instructions
 
 ### 1. Clone the repository
 
 ```bash
 git clone https://github.com/bharadwajreddy423/speech_translator.git
 cd speech_translator
-````
+```
 
 ### 2. Create and activate virtual environment
 
 ```bash
+# macOS/Linux
+python3 -m venv venv
+source venv/bin/activate
+
+# Windows
 python -m venv venv
-source venv/bin/activate    # macOS/Linux
-venv\Scripts\activate       # Windows
+venv\Scripts\activate
 ```
 
-### 3. Install all dependencies
+### 3. Install dependencies
 
 ```bash
 pip install -r requirements.txt
@@ -67,47 +73,47 @@ pip install -r requirements.txt
 
 ## ▶️ Usage
 
-Run the pipeline with any number of input audio files:
+### Command format
 
 ```bash
 python run_pipeline.py \
-  --inputs audio/german.mp3:en audio/french.mp3:hi \
+  --inputs audio/audio01.mp3:en audio/audio02.mp3:hi \
   --device cpu \
   --compute_type int8
 ```
 
-### 🔍 Parameters:
+### Parameters
 
-* `--inputs`: Space-separated list of `audio_file:target_lang` pairs
-* `--device`: `cpu` or `cuda` (for GPU inference)
-* `--compute_type`: `int8`, `float16`, or `float32` precision
+* `--inputs`: Space-separated list of audio files and target language pairs (e.g., `file.mp3:en`)
+* `--device`: `cpu` or `cuda` (if using GPU)
+* `--compute_type`: Precision mode (`int8`, `float16`, `float32`)
 
-### ✅ Example Output:
+### Example Output
 
 ```
 ========== Result ==========
-File: audio/german.mp3
-Detected Language: de
+File: audio/audio01.mp3
+Detected Language: fr
 Transcript:
- Janusz, wie hältst du dich glücklich? ...
+ Bonjour, je m'appelle Sophie. Je suis très heureuse de vous rencontrer.
 Translated to en:
- Janusz, how do you feel happy? ...
+ Hello, my name is Sophie. I am very happy to meet you.
 ============================
 ```
 
 ---
 
-## 🧪 Running Unit Tests
+## 🧪 Running Tests
 
-Run all tests using Pytest:
+Run unit tests using:
 
 ```bash
 pytest -v
 ```
 
-This will run tests for:
+Tests will validate:
 
-* Audio transcription
-* Language translation
-* Input validation logic
+* Transcription accuracy
+* Translation consistency
+* Input parsing logic
 
